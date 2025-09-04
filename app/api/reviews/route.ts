@@ -48,7 +48,7 @@ export async function POST(req: Request) {
 
     reviews.push(newReview);
     return NextResponse.json(newReview, { status: 201 });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: "Invalid JSON payload" },
       { status: 400 }

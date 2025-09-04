@@ -3,10 +3,11 @@ import { searchBooks } from "./lib/googleBooks";
 import BookCard from "./components/BookCard";
 import SearchBar from "./components/SearchBar";
 import { useState } from "react";
+import type { GoogleBook } from "./types";
 import './globals.css'
 
 export default function HomePage() {
-  const [books, setBooks] = useState<any[]>([]);
+  const [books, setBooks] = useState<GoogleBook[]>([]);
 
   const handleSearch = async (query: string) => {
     const results = await searchBooks(query);
@@ -21,8 +22,8 @@ export default function HomePage() {
   ];
 
   const fetchSuggestedBooks = async () => {
-    const all: any[] = [];
-    for (let title of suggestedBooks) {
+    const all: GoogleBook[] = [];
+    for (const title of suggestedBooks) {
       const res = await searchBooks(title);
       all.push(...res);
     }
@@ -43,7 +44,7 @@ export default function HomePage() {
       </button>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {books.map((book: any) => (
+        {books.map((book) => (
           <BookCard
             key={book.id}
             id={book.id}

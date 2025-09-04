@@ -7,11 +7,7 @@ interface Review {
   rating: number;
 }
 
-interface ReviewSectionProps {
-  bookId: string;
-}
-
-export default function ReviewSection({ bookId }: ReviewSectionProps) {
+export default function ReviewSection() {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [content, setContent] = useState("");
   const [rating, setRating] = useState(0);

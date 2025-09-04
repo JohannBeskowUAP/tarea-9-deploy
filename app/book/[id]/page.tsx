@@ -1,6 +1,5 @@
 import { getBookById } from "../../lib/googleBooks";
-import ReviewSection from "../../components/ReviewSection";
-
+import Image from "next/image";
 interface BookPageProps {
   params: Promise<{ id: string }>;
 }
@@ -25,7 +24,7 @@ export default async function BookPage({ params }: BookPageProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white shadow rounded-xl p-6">
         {/* Book Cover */}
         {info.imageLinks?.thumbnail && (
-          <img
+          <Image
             src={info.imageLinks.thumbnail}
             alt={info.title}
             className="w-full rounded-lg shadow-md"
@@ -47,9 +46,6 @@ export default async function BookPage({ params }: BookPageProps) {
           )}
         </div>
       </div>
-
-      {/* Review Section */}
-      <ReviewSection bookId={id} />
     </div>
   );
 }
