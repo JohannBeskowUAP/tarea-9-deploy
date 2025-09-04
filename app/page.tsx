@@ -3,6 +3,7 @@ import { searchBooks } from "./lib/googleBooks";
 import BookCard from "./components/BookCard";
 import SearchBar from "./components/SearchBar";
 import { useState } from "react";
+import './globals.css'
 
 export default function HomePage() {
   const [books, setBooks] = useState<any[]>([]);
